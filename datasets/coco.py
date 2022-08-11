@@ -412,7 +412,12 @@ def build_semi_label(image_set, args):
     assert root.exists(), f'provided COCO path {root} does not exist'
     mode = 'instances'
 
-    if args.dataset_file == "voc_semi":
+    if args.dataset_file == "d_dataset":
+        PATHS = {
+            "train": (root / "train/", root / args.annotation_json_label),
+            "val": (root / "val", root / 'val.json'),
+        }
+    elif args.dataset_file == "voc_semi":
         PATHS = {
             "train": (root / "VOCdevkit/VOC2007trainval/JPEGImages", root / "VOCdevkit/VOC2007trainval" / args.annotation_json_label),
             "val": (root / "OCdevkit/VOC2007test/JPEGImages", root / "VOCdevkit/VOC2007test" / 'instances_VOC_test2007.json'),
@@ -467,7 +472,13 @@ def build_semi_unlabel(image_set, args):
     root = Path(args.data_path)
     assert root.exists(), f'provided COCO path {root} does not exist'
     mode = 'instances'
-    if args.dataset_file == "voc_semi":
+
+    if args.dataset_file == "d_dataset":
+        PATHS = {
+            "train": (root / "unlabeled/", root / args.annotation_json_unlabel),
+            "val": (root / "val", root / 'val.json'),
+    }
+    elif args.dataset_file == "voc_semi":
         PATHS = {
             "train": (root / "VOCdevkit/VOC2012trainval/JPEGImages", root / "VOCdevkit/VOC2012trainval" / args.annotation_json_unlabel),
             "val": (root / "OCdevkit/VOC2007test/JPEGImages", root / "VOCdevkit/VOC2007test" / 'instances_VOC_test2007.json'),
