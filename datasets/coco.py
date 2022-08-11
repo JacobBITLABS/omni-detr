@@ -366,7 +366,12 @@ def build(image_set, args):
     root = Path(args.data_path)
     assert root.exists(), f'provided COCO path {root} does not exist'
     mode = 'instances'
-    if args.dataset_file == "voc_omni":
+    if args.dataset_file == "d_dataset":
+        PATHS = {
+            "train": (root / "train/", root / args.annotation_json_label),
+            "val": (root / "val", root / 'val.json'),
+        }
+    elif args.dataset_file == "voc_omni":
         PATHS = {
             "train": (root / "VOCdevkit/VOC20072012trainval/JPEGImages", root / "VOCdevkit/VOC20072012trainval" / args.annotation_json_label),
             "val": (root / "VOCdevkit/VOC2007test/JPEGImages", root / "VOCdevkit/VOC2007test" / 'instances_VOC_test2007_test.json'),
