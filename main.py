@@ -171,7 +171,7 @@ def main(args):
 
     if args.dataset_file == "coco":
         model, criterion, postprocessors = build_model(args)
-    elif  args.dataset_file == "visdrone" or args.dataset_file == "coco_omni" or args.dataset_file == 'coco_add_semi' or args.dataset_file == "coco_35to80_tagsU" or args.dataset_file == "coco_35to80_point" or args.dataset_file == 'coco_objects_tagsU' or args.dataset_file == 'coco_objects_points' or args.dataset_file == 'bees_omni' or args.dataset_file == 'voc_semi' or args.dataset_file == 'voc_omni' or args.dataset_file == 'objects_omni' or args.dataset_file == 'crowdhuman_omni':
+    elif  args.dataset_file == "d_dataset" or args.dataset_file == "coco_omni" or args.dataset_file == 'coco_add_semi' or args.dataset_file == "coco_35to80_tagsU" or args.dataset_file == "coco_35to80_point" or args.dataset_file == 'coco_objects_tagsU' or args.dataset_file == 'coco_objects_points' or args.dataset_file == 'bees_omni' or args.dataset_file == 'voc_semi' or args.dataset_file == 'voc_omni' or args.dataset_file == 'objects_omni' or args.dataset_file == 'crowdhuman_omni':
         model_student, model_teacher, criterion, criterion_burnin, postprocessors = build_model_semi(args)
     model_student.to(device)
     model_teacher.to(device)
