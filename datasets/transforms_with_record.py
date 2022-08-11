@@ -381,16 +381,16 @@ class RandomGrayScale(object):
         return img, target, record
 
 
-class RandomGaussianBlur(object):
-    def __init__(self, p=0.5):
-        self.p = p
-        self.transform = T.GaussianBlur(sigma=(0.1, 2.0), kernel_size=(23,23))
+# class RandomGaussianBlur(object):
+#     def __init__(self, p=0.5):
+#         self.p = p
+#         self.transform = T.GaussianBlur(sigma=(0.1, 2.0), kernel_size=(23,23))
 
-    def __call__(self, img, target, record):
-        if random.random() < self.p:
-            return self.transform(img), target, record
-            # return GaussianBlur(img), target, record
-        return img, target, record
+#     def __call__(self, img, target, record):
+#         if random.random() < self.p:
+#             return self.transform(img), target, record
+#             # return GaussianBlur(img), target, record
+#         return img, target, record
 
 
 class RandomContrast(object):
