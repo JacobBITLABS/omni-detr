@@ -198,6 +198,7 @@ def make_coco_transforms600(image_set):
 
 
 def make_coco_transforms(image_set):
+    scales = [480, 512, 544, 576, 608, 640, 672, 704, 736, 768, 800] # added
 
     normalize = T.Compose([
         T.ToTensor(),
