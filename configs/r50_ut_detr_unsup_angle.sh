@@ -19,5 +19,5 @@ python -u main.py \
     --epochs 1000 \
     --lr_drop 1000 \
     --pixels 800 \
-    --dataset_file 'visdrone' \
+    --dataset_file 'd_dataset' \
     --resume '' \
