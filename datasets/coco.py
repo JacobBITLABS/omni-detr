@@ -241,7 +241,7 @@ def make_coco_strong_transforms_with_record(image_set):
             Tr.RandomHorizontalFlip(),
             Tr.RandomColorJiter(),
             Tr.RandomGrayScale(),
-            Tr.RandomGaussianBlur(),
+            # Tr.RandomGaussianBlur(), # this is uncommented as it is not availabale in torchvision==0.6.0 
             # Tr.RandomContrast(),
             # Tr.RandomAdjustSharpness(),
             # Tr.RandomPosterize(),
