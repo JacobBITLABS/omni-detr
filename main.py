@@ -186,7 +186,7 @@ def main(args):
 
     if args.dataset_file == "coco":
         dataset_train = build_dataset(image_set='train', label=True, args=args)
-    elif args.dataset_file == "coco_omni" or args.dataset_file == 'coco_add_semi' or args.dataset_file == "coco_35to80_tagsU" or args.dataset_file == "coco_35to80_point" or args.dataset_file == 'coco_objects_tagsU' or args.dataset_file == 'coco_objects_points' or args.dataset_file == 'bees_omni' or args.dataset_file == 'voc_semi' or args.dataset_file == 'voc_omni' or args.dataset_file == 'objects_omni' or args.dataset_file == 'crowdhuman_omni':
+    elif args.dataset_file == "d_dataset" or args.dataset_file == "d_dataset" or args.dataset_file == "coco_omni" or args.dataset_file == 'coco_add_semi' or args.dataset_file == "coco_35to80_tagsU" or args.dataset_file == "coco_35to80_point" or args.dataset_file == 'coco_objects_tagsU' or args.dataset_file == 'coco_objects_points' or args.dataset_file == 'bees_omni' or args.dataset_file == 'voc_semi' or args.dataset_file == 'voc_omni' or args.dataset_file == 'objects_omni' or args.dataset_file == 'crowdhuman_omni':
         dataset_train_label = build_dataset(image_set='train', label=True, args=args)
         dataset_train_unlabel = build_dataset(image_set='train', label=False, args=args)
         dataset_train_burnin = build_dataset(image_set='burnin', label=True, args=args)
@@ -203,7 +203,7 @@ def main(args):
         else:
             sampler_train = torch.utils.data.RandomSampler(dataset_train)
             sampler_val = torch.utils.data.SequentialSampler(dataset_val)
-    elif args.dataset_file == "coco_omni" or args.dataset_file == 'coco_add_semi' or args.dataset_file == "coco_35to80_tagsU" or args.dataset_file == "coco_35to80_point" or args.dataset_file == 'coco_objects_tagsU' or args.dataset_file == 'coco_objects_points' or args.dataset_file == 'bees_omni' or args.dataset_file == 'voc_semi' or args.dataset_file == 'voc_omni' or args.dataset_file == 'objects_omni' or args.dataset_file == 'crowdhuman_omni':
+    elif args.dataset_file == "d_dataset" or args.dataset_file == "coco_omni" or args.dataset_file == 'coco_add_semi' or args.dataset_file == "coco_35to80_tagsU" or args.dataset_file == "coco_35to80_point" or args.dataset_file == 'coco_objects_tagsU' or args.dataset_file == 'coco_objects_points' or args.dataset_file == 'bees_omni' or args.dataset_file == 'voc_semi' or args.dataset_file == 'voc_omni' or args.dataset_file == 'objects_omni' or args.dataset_file == 'crowdhuman_omni':
         if args.distributed:
             if args.cache_mode:
                 sampler_train_label = samplers.NodeDistributedSampler(dataset_train_label)
@@ -224,7 +224,7 @@ def main(args):
     if args.dataset_file == "coco":
         batch_sampler_train = torch.utils.data.BatchSampler(
             sampler_train, args.batch_size, drop_last=True)
-    elif args.dataset_file == "coco_omni" or args.dataset_file == 'coco_add_semi' or args.dataset_file == "coco_35to80_tagsU" or args.dataset_file == "coco_35to80_point" or args.dataset_file == 'coco_objects_tagsU' or args.dataset_file == 'coco_objects_points' or args.dataset_file == 'bees_omni' or args.dataset_file == 'voc_semi' or args.dataset_file == 'voc_omni' or args.dataset_file == 'objects_omni' or args.dataset_file == 'crowdhuman_omni':
+    elif args.dataset_file == "d_dataset" or args.dataset_file == "coco_omni" or args.dataset_file == 'coco_add_semi' or args.dataset_file == "coco_35to80_tagsU" or args.dataset_file == "coco_35to80_point" or args.dataset_file == 'coco_objects_tagsU' or args.dataset_file == 'coco_objects_points' or args.dataset_file == 'bees_omni' or args.dataset_file == 'voc_semi' or args.dataset_file == 'voc_omni' or args.dataset_file == 'objects_omni' or args.dataset_file == 'crowdhuman_omni':
         batch_sampler_train_label = torch.utils.data.BatchSampler(
             sampler_train_label, args.batch_size, drop_last=True)
         batch_sampler_train_unlabel = torch.utils.data.BatchSampler(
@@ -236,7 +236,7 @@ def main(args):
         data_loader_train = DataLoader(dataset_train, batch_sampler=batch_sampler_train,
                                        collate_fn=utils.collate_fn, num_workers=args.num_workers,
                                        pin_memory=True)
-    elif args.dataset_file == "coco_omni" or args.dataset_file == 'coco_add_semi' or args.dataset_file == "coco_35to80_tagsU" or args.dataset_file == "coco_35to80_point" or args.dataset_file == 'coco_objects_tagsU' or args.dataset_file == 'coco_objects_points' or args.dataset_file == 'bees_omni' or args.dataset_file == 'voc_semi' or args.dataset_file == 'voc_omni' or args.dataset_file == 'objects_omni' or args.dataset_file == 'crowdhuman_omni':
+    elif args.dataset_file == "d_dataset" or args.dataset_file == "coco_omni" or args.dataset_file == 'coco_add_semi' or args.dataset_file == "coco_35to80_tagsU" or args.dataset_file == "coco_35to80_point" or args.dataset_file == 'coco_objects_tagsU' or args.dataset_file == 'coco_objects_points' or args.dataset_file == 'bees_omni' or args.dataset_file == 'voc_semi' or args.dataset_file == 'voc_omni' or args.dataset_file == 'objects_omni' or args.dataset_file == 'crowdhuman_omni':
         data_loader_train_label = DataLoader(dataset_train_label, batch_sampler=batch_sampler_train_label,
                                              collate_fn=utils.collate_fn, num_workers=args.num_workers,
                                              pin_memory=True)
