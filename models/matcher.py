@@ -187,10 +187,12 @@ class HungarianMatcher_semi(nn.Module):
             C = C.view(bs, num_queries, -1).cpu()
 
             # We add this in order to fix the issue rarely happens, "matrix contains invalid numeric entries"
-            if torch.isneginf(C).any():
-                C_np = C.data.cpu().detach().numpy()
-                np.save('C_isneginf.npy', C_np)
-                C[torch.isneginf(C)] = -1e5
+            """ CHANGED KKK"""
+            # if torch.isneginf(C).any():
+            #     C_np = C.data.cpu().detach().numpy()
+            #     np.save('C_isneginf.npy', C_np)
+            #     C[torch.isneginf(C)] = -1e5
+            """ CHANGED KKK"""
             if torch.isnan(C).any():
                 C_np = C.data.cpu().detach().numpy()
                 np.save('C_isnan.npy', C_np)
